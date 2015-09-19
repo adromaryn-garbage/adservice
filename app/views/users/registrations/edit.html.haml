@@ -1,0 +1,93 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--1-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
+  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
+    %h2
+      Edit #{resource_name.to_s.humanize}
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      - if devise_error_messages! != ""
+        .mdl-card__supporting-text.error-message
+          = devise_error_messages!
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :login
+        %br/
+        .mdl-textfield__input
+          = f.text_field :login, autofocus: true
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :full_name
+        %br/
+        .mdl-textfield__input
+          = f.text_field :full_name, autofocus: true
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :birthday
+        %br/
+        .mdl-textfield__input
+          = f.date_field :birthday, value: @user.birthday
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :email
+        %br/
+        .mdl-textfield__input
+          = f.email_field :email
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :address
+        %br/
+        .mdl-textfield__input
+          = f.text_field :address
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :city
+        %br/
+        .mdl-textfield__input
+          = f.text_field :city
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :state
+        %br/
+        .mdl-textfield__input
+          = f.text_field :state
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :country
+        %br/
+        .mdl-textfield__input
+          = f.text_field :country
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :zip
+        %br/
+        = f.number_field :zip
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :password
+        %br/
+        .mdl-textfield__input
+          = f.password_field :password, autocomplete: "off"
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :password_confirmation
+        %br/
+        .mdl-textfield__input
+          = f.password_field :password_confirmation, autocomplete: "off"
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :current_password
+        %br/
+        .mdl-textfield__input
+          = f.password_field :current_password, autocomplete: "off"
+        = f.submit "Update"
+    %h3 Cancel my account
+    %p
+      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"}
+    = link_to "Back", :back
+  .mdl-cell.mdl-cell--3-col.mdl-cell--3-col-tablet#map-content
+  
+:javascript
+   $(document).ready(load_map);
+   $('.field input').keyup(load_map);

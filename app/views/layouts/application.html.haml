@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Adservice
+    %script{:src => "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry", :type => "text/javascript"}
+    %script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js",
+            :type => "text/javascript"}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    /
+      Uses a header that scrolls with the text, rather than staying
+      locked at the top
+    .mdl-layout.mdl-js-layout
+      %header.mdl-layout__header.mdl-layout__header--scroll
+        .mdl-layout__header-row
+          / AdService
+          %span.mdl-layout-title AdService
+          / Add spacer, to align navigation to the right
+          .mdl-layout-spacer
+          / Navigation
+          %nav.mdl-navigation
+            = link_to "Home",root_path, class: "mdl-navigation__link"
+            -if user_signed_in?
+              = link_to "Sign out",destroy_user_session_path, method: :delete,  class: "mdl-navigation__link"
+            -else
+              = link_to "Sign in",  new_user_session_path,  class: "mdl-navigation__link"
+      -if user_signed_in?
+        .mdl-layout__drawer
+          :javascript
+            componentHandler.upgradeDom();
+          %span.mdl-layout-title AdService
+          %nav.mdl-navigation
+            %a.mdl-navigation__link{:href => edit_user_registration_path} Edit profile
+      %main.mdl-layout__content
+        .page-content
+          = yield

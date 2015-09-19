@@ -1,0 +1,16 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--1-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
+  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
+
+    %h2 Resend confirmation instructions
+    = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :email
+        %br/
+        .mdl-textfield__input
+          = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+      .actions
+        = f.submit "Resend confirmation instructions", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+    = render "users/shared/links"

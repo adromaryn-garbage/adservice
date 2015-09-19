@@ -1,0 +1,24 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--3-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
+  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
+    %h2 Log in
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :login
+        %br/
+        .mdl-textfield__input
+          = f.text_field :login, autofocus: true
+      .field.mdl-textfield.mdl-js-textfield
+        .mdl-textfield__label
+          = f.label :password
+        %br/
+        .mdl-textfield__input
+          = f.password_field :password, autocomplete: "off"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "Log in", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+    = render "users/shared/links"

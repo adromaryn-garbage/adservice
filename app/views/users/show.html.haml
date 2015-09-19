@@ -1,0 +1,11 @@
+%h1= @user.full_name
+%p= @user.birthday
+
+#map-content
+ #map
+
+:javascript
+  $(document).ready(function(){
+    var coords = #{@coords.to_json};    // pass ruby variable to javascript
+    gmap_show(coords);    // init show map 
+  });
