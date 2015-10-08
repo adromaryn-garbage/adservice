@@ -3,9 +3,7 @@
   .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
     %h2 Sign up
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      - if devise_error_messages! != ""
-        .mdl-card__supporting-text.error-message
-          = devise_error_messages!
+      = devise_error_messages!
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :login
@@ -76,7 +74,7 @@
         .mdl-textfield__input
           = f.password_field :password_confirmation, autocomplete: "off"
       .actions
-        = f.submit "Sign up", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+        = f.submit "Sign up", class: "button mdl-js-button"
     = render "users/shared/links"
   .mdl-cell.mdl-cell--3-col.mdl-cell--3-col-tablet#map-content
 

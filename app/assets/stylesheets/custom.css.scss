@@ -12,7 +12,7 @@
   }
 }
 
-.error-message{
+#error_explanation{
   color:red;
   background-color: #FFCCCC;
   border-radius:5px;
@@ -23,6 +23,25 @@
   }
 }
 
-.mdl-button{
+.button{
   margin:10px 0;
+  @extend .mdl-button;
+  @extend .mdl-button--raised;
+  @extend .mdl-button--colored;
 }
+
+.ad{
+  padding:20px;
+  margin:10px 0px;
+  background:#eeff99;
+  border-radius:5px;
+}
+
+.img-medium{
+  height: 300px;
+}
+
+.thumb{
+  height: 100px;
+}
+

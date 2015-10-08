@@ -36,7 +36,9 @@ gem 'gmaps4rails', '2.1.2'
 
 gem 'omniauth-google-oauth2', '0.2.6'
 
-gem 'date_validator', '0.8.1'
+gem 'paperclip', '4.3.1'
+
+gem 'RedCloth', '4.2.9'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

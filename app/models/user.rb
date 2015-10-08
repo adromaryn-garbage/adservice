@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable, :omniauth_providers => [:google_oauth2]
-  
+ 
+  before_validation :parse_date
   validates :login,      presence: true
   validates :full_name,  presence: true
   validates :birthday,   presence: true,
@@ -16,6 +17,8 @@ class User < ActiveRecord::Base
   validates :country,    presence: true
   validates :zip,        presence: true
   validate  :address_is_bad
+  
+  has_many :advertisements
   
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -45,5 +48,11 @@ class User < ActiveRecord::Base
     # end
     user
   end
+ 
+  private
+    
+    def parse_date
+      self.birthday = self.birthday.split('-').reverse.join('.') if self.birthday.count('-')
+    end
   
 end

@@ -1,0 +1,18 @@
+%h2
+= form_for(@advertisement) do |f|
+    
+  .field.mdl-textfield.mdl-js-textfield
+    .mdl-textfield__label
+      = f.label :text
+    %br/
+    .mdl-textfield__input
+      = f.text_area :text, autofocus: true
+  %br/
+  .field.mdl-textfield.mdl-js-textfield
+    .mdl-textfield__label
+      = f.label :image
+    %br/
+    .mdl-textfield__input
+      = f.file_field :image
+  %br/
+  = f.submit @submit, class: "button mdl-js-button"

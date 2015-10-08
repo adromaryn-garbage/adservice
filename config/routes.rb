@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  root to: "users#current_user_profile"
+  resources :advertisements
+  root to: "advertisements#index"
   
   get '/id:id' => 'users#show', as: 'user'
   get '/users/coords' => 'coords'

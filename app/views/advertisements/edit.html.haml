@@ -1,0 +1,9 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--1-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
+  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
+    %h1 Editing Advertisement
+    -@submit="Update"
+    = render 'form'
+    = link_to 'Show', @advertisement
+    |
+    = link_to 'Back', advertisements_path

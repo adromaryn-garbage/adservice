@@ -1,0 +1,14 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--1-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
+  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
+    .ad
+      %p
+        %strong Text:
+        = render :partial => "textile.text.erb"
+      %p
+        %strong User:
+        = @advertisement.user.login
+      =image_tag @advertisement.image.url, class: "img-medium"
+      %br/
+      = link_to 'Edit', edit_advertisement_path(@advertisement)
+      = link_to 'Back', advertisements_path

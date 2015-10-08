@@ -81,10 +81,11 @@
         %br/
         .mdl-textfield__input
           = f.password_field :current_password, autocomplete: "off"
-        = f.submit "Update"
+      %br/
+      = f.submit "Update", class: "button mdl-js-button"
     %h3 Cancel my account
     %p
-      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"}
+      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button mdl-js-button"}
     = link_to "Back", :back
   .mdl-cell.mdl-cell--3-col.mdl-cell--3-col-tablet#map-content
   

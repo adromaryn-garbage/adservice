@@ -1,0 +1,22 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--1-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
+  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
+    %h1 Advertisements
+    
+    = link_to 'New Advertisement', new_advertisement_path
+    - @advertisements.reverse.each do |advertisement|
+      -@advertisement = advertisement
+      .ad
+        = render :partial => "textile.text.erb"
+        %br/
+        %b by user: 
+        = @advertisement.user.login
+        %br/
+        =image_tag @advertisement.image.url, class: "thumb"
+        %br/
+        = link_to 'Show', advertisement
+        -if advertisement.user == current_user  
+          = link_to 'Edit', edit_advertisement_path(advertisement)
+          = link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' }
+        %br/
+    %br/

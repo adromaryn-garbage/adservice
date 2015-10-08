@@ -29,11 +29,18 @@
               = link_to "Sign in",  new_user_session_path,  class: "mdl-navigation__link"
       -if user_signed_in?
         .mdl-layout__drawer
-          :javascript
-            componentHandler.upgradeDom();
           %span.mdl-layout-title AdService
           %nav.mdl-navigation
+            %a.mdl-navigation__link{:href => user_path(current_user)} 
+              = current_user.login
             %a.mdl-navigation__link{:href => edit_user_registration_path} Edit profile
       %main.mdl-layout__content
         .page-content
+          %p#notice
+            = notice
           = yield
+    :javascript
+      setInterval("upgradeMDL();", 100);
+      function upgradeMDL() {
+        componentHandler.upgradeDom();
+      }
