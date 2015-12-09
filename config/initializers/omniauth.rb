@@ -3,7 +3,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     {
     :client_options => { :ssl => { :ca_file => 'C:\Ruby21\cacert.pem'}},
     :provider_ignores_state => true,
-    :redirect_uri => 'https://.../users/auth/google_oauth2/callback',
+    :redirect_uri => 'https://adservice-adromaryn/users/auth/google_oauth2/callback',
     :prompt => "select_account",
     setup: (lambda do |env|
       request = Rack::Request.new(env)
