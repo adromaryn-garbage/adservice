@@ -98,5 +98,6 @@ Rails.application.configure do
   }
 }
 
+  OmniAuth.config.full_host = "http://adservice-adromaryn.herokuapp.com"
   
 end
