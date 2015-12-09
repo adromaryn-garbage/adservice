@@ -38,6 +38,8 @@ gem 'omniauth-google-oauth2', '0.2.6'
 
 gem 'paperclip', '4.3.1'
 
+gem 'aws-sdk', '< 2.0'
+
 gem 'RedCloth', '4.2.9'
 
 # Use Unicorn as the app server
