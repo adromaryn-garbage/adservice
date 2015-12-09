@@ -34,6 +34,8 @@ gem 'geocoder', ' 1.2.11'
 
 gem 'gmaps4rails', '2.1.2'
 
+gem 'omniauth-oauth2', '~> 1.3.1'
+
 gem 'omniauth-google-oauth2', '0.2.6'
 
 gem 'paperclip', '4.3.1'
