@@ -4,7 +4,9 @@
     %h1 Advertisements
     
     = link_to 'New Advertisement', new_advertisement_path
-    - @advertisements.reverse.each do |advertisement|
+    %br/
+    = will_paginate @advertisements
+    - @advertisements.each do |advertisement|
       -@advertisement = advertisement
       .ad
         = render :partial => "textile.text.erb"
@@ -19,4 +21,5 @@
           = link_to 'Edit', edit_advertisement_path(advertisement)
           = link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' }
         %br/
+    = will_paginate @advertisements
     %br/

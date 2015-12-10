@@ -3,7 +3,7 @@ class AdvertisementsController < ApplicationController
   before_action :set_advertisement,  only: [:show, :edit, :update, :destroy]
 
   def index
-    @advertisements = Advertisement.all
+    @advertisements = Advertisement.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
   end
 
   def show
