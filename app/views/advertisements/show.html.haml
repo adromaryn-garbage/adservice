@@ -10,5 +10,9 @@
         = @advertisement.user.login
       =image_tag @advertisement.image.url, class: "img-medium"
       %br/
-      = link_to 'Edit', edit_advertisement_path(@advertisement)
+      - if current_user == @advertisement.user
+        = link_to 'Edit', edit_advertisement_path(@advertisement)
+      - else
+        = link_to 'Response', new_response_path(@advertisement.id) 
       = link_to 'Back', advertisements_path
+      

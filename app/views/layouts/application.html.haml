@@ -33,7 +33,10 @@
           %nav.mdl-navigation
             %a.mdl-navigation__link{:href => user_path(current_user)} 
               = current_user.login
-            %a.mdl-navigation__link{:href => edit_user_registration_path} Edit profile
+            %a.mdl-navigation__link{:href => edit_user_registration_path} 
+              Edit profile
+            %a.mdl-navigation__link{:href => responses_path}
+              Your responses
       %main.mdl-layout__content
         .page-content
           %p#notice

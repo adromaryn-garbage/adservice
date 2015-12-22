@@ -1,0 +1,16 @@
+= form_tag(response_path(@ad_id), method: "post") do
+  - if @response.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@response.errors.count, "error")
+        prohibited this response from being saved:
+      %ul
+        - @response.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = label_tag("response[content]", "Your response:")
+    %br/
+    = text_area_tag("response[content]")
+    %br/
+    = submit_tag("Send")
+    %br/

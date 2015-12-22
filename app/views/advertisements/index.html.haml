@@ -20,6 +20,32 @@
         -if advertisement.user == current_user  
           = link_to 'Edit', edit_advertisement_path(advertisement)
           = link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' }
+        -else
+          - @ad_id = @advertisement.id
+          - @response = Response.new()
+          - jstr = "response('#advertisement_#{@ad_id}')"
+          = link_to "Response", "#", onclick: jstr, class: "response-button"
+          .response-form[@advertisement]
+            = render 'responses/form'
         %br/
     = will_paginate @advertisements
     %br/
+    
+:javascript
+  $(document).ready(function(){
+    $('.advertisement').hide();
+  });
+  
+  $("body").click( function(e){
+    if($(e.target).parents('.advertisement').length != 1 && 
+            e.target.className != "advertisement" &&
+            e.target.className != "response-button")
+    {
+      $('.advertisement').hide();
+    }
+  });
+  
+  function response(id){
+    $('.advertisement').hide();
+    $(id).show();
+  }

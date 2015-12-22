@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   validate  :address_is_bad
   
   has_many :advertisements
+  has_many :responses
   
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
