@@ -20,4 +20,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  home: "Home"
+  signin: "Sign in"
+  signout: "Sign out"
+  signup: "Sign up"
+  editprofile: "Edit profile"
+  responses: "Your responses"
+  edit: "Edit"
+  update: "Update"
+  accountcancel: "Cancel my account"
+  unhappy: "Несчастны"
+  back: "Назад"
+  forgotpass: "Forgot your password?"
+  confinstr: "Didn't receive confirmation instructions?"
+  signin_with: "Sign in with: "

@@ -22,11 +22,20 @@
           .mdl-layout-spacer
           / Navigation
           %nav.mdl-navigation
-            = link_to "Home",root_path, class: "mdl-navigation__link"
+            %button#demo-menu-lower-left.mdl-button.mdl-js-button.mdl-button--icon
+              %i.material-icons 
+                language
+            %ul{class: "mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect demo-menu-lower-left",
+              for: "demo-menu-lower-left"}
+              %li.mdl-menu__item
+                = link_to "English", "?locale=en"
+              %li.mdl-menu__item 
+                = link_to "Русский", "?locale=ru"
+            = link_to t("home") ,root_path, class: "mdl-navigation__link"
             -if user_signed_in?
-              = link_to "Sign out",destroy_user_session_path, method: :delete,  class: "mdl-navigation__link"
+              = link_to t("signout"),destroy_user_session_path, method: :delete,  class: "mdl-navigation__link"
             -else
-              = link_to "Sign in",  new_user_session_path,  class: "mdl-navigation__link"
+              = link_to t("signin"),  new_user_session_path,  class: "mdl-navigation__link"
       -if user_signed_in?
         .mdl-layout__drawer
           %span.mdl-layout-title AdService
@@ -34,9 +43,9 @@
             %a.mdl-navigation__link{:href => user_path(current_user)} 
               = current_user.login
             %a.mdl-navigation__link{:href => edit_user_registration_path} 
-              Edit profile
+              = t('editprofile')
             %a.mdl-navigation__link{:href => responses_path}
-              Your responses
+              = t("responses")
       %main.mdl-layout__content
         .page-content
           %p#notice

@@ -1,17 +1,20 @@
-%h1 Listing Responses
-= will_paginate @responses
+.mdl-grid
+  .mdl-cell.mdl-cell--4-col.mdl-cell--1-col-tablet.mdl-cell--hide-phone
+  .mdl-cell.mdl-cell--6-col.mdl-cell--6-col-tablet.mdl-cell-4-col-phone
+    %h1 Your Responses
+    = will_paginate @responses
 
-- @responses.each do |response|
-  .ad
+    - @responses.each do |response|
+      .ad
+        %br/
+        %b from user 
+        = response.user.login
+        %br/
+        = response.content
+        %br/
+        = link_to 'Your Ad ', advertisement_path(response.advertisement)
+        %br/
+        = link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' }
+        %br/
+    = will_paginate @responses
     %br/
-    %b from user 
-    = response.user.login
-    %br/
-    = response.content
-    %br/
-    = link_to 'Your Ad ', advertisement_path(response.advertisement)
-    %br/
-    = link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' }
-    %br/
-= will_paginate @responses
-%br/

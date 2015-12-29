@@ -1,11 +1,15 @@
-%h1= @user.full_name
-%p= @user.birthday
+.mdl-grid
+  .mdl-cell.mdl-cell--1-col.mdl-cell--1-col-tablet.mdl-cell--hide-phone
+  .mdl-cell.mdl-cell--8-col.mdl-cell--4-col-tablet.mdl-cell-4-col-phone
 
-#map-content
- #map
+    %h1= @user.full_name
+    %p= @user.birthday
 
-:javascript
-  $(document).ready(function(){
-    var coords = #{@coords.to_json};    // pass ruby variable to javascript
-    gmap_show(coords);    // init show map 
-  });
+    #map-content
+      #map
+
+    :javascript
+      $(document).ready(function(){
+        var coords = #{@coords.to_json};    // pass ruby variable to javascript
+        gmap_show(coords);    // init show map 
+      });

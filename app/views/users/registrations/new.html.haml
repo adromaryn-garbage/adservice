@@ -1,7 +1,8 @@
 .mdl-grid
-  .mdl-cell.mdl-cell--3-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
-  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
-    %h2 Sign up
+  .mdl-cell.mdl-cell--1-col.mdl-cell--1-col-tablet.mdl-cell--hide-phone
+  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-4-col-phone
+    %h2 
+      =t("signup")
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = devise_error_messages!
       .field.mdl-textfield.mdl-js-textfield
@@ -10,54 +11,63 @@
         %br/
         .mdl-textfield__input
           = f.text_field :login, autofocus: true
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :full_name
         %br/
         .mdl-textfield__input
           = f.text_field :full_name
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :birthday
         %br/
         .mdl-textfield__input
           = f.date_field :birthday, value: Time.now.strftime("%d.%m.%Y")
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :email
         %br/
         .mdl-textfield__input
           = f.email_field :email
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :address
         %br/
         .mdl-textfield__input
           = f.text_field :address
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :city
         %br/
         .mdl-textfield__input
           = f.text_field :city
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :state
         %br/
         .mdl-textfield__input
           = f.text_field :state
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :country
         %br/
         .mdl-textfield__input
           = f.text_field :country
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :zip
         %br/
         .mdl-textfield__input
           = f.number_field :zip
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :password
@@ -67,6 +77,7 @@
         %br/
         .mdl-textfield__input
           = f.password_field :password, autocomplete: "off"
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :password_confirmation
@@ -76,7 +87,7 @@
       .actions
         = f.submit "Sign up", class: "button mdl-js-button"
     = render "users/shared/links"
-  .mdl-cell.mdl-cell--3-col.mdl-cell--3-col-tablet#map-content
+  .mdl-cell.mdl-cell--3-col.mdl-cell--3-col-tablet.mdl-cell-4-col-phone#map-content.map-fixed
 
 :javascript
    $('.field input').keyup(load_map);

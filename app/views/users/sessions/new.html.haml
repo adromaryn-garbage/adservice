@@ -1,7 +1,8 @@
 .mdl-grid
-  .mdl-cell.mdl-cell--3-col.mdl-cell--1-col-tablet.mdl-cell-1-col-phone
-  .mdl-cell.mdl-cell--5-col.mdl-cell--3-col-tablet.mdl-cell-3-col-phone
-    %h2 Log in
+  .mdl-cell.mdl-cell--4-col.mdl-cell--1-col-tablet.mdl-cell--hide-phone
+  .mdl-cell.mdl-cell--6-col.mdl-cell--6-col-tablet.mdl-cell-4-col-phone
+    %h2
+      = t("signin")
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
@@ -9,6 +10,7 @@
         %br/
         .mdl-textfield__input
           = f.text_field :login, autofocus: true
+      %br/
       .field.mdl-textfield.mdl-js-textfield
         .mdl-textfield__label
           = f.label :password
@@ -20,5 +22,5 @@
           = f.check_box :remember_me
           = f.label :remember_me
       .actions
-        = f.submit "Log in", class: "button mdl-js-button"
+        = f.submit t("signin"), class: "button mdl-js-button"
     = render "users/shared/links"
